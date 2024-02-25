@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .view import home, contact, about, reg
+from .view import home, contact, about, reg, contact
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('', home, name='empty_path_home'),
     path('about', about, name='about'),
     path('reg', reg, name= 'reg'),
+    path('contact', contact, name='contact'),
 
 ]
 if settings.DEBUG:
