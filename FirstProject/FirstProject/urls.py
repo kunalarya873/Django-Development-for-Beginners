@@ -27,7 +27,6 @@ urlpatterns = [
     path('', home, name='empty_path_home'),
     path('about', about, name='about'),
     path('reg', reg, name= 'reg'),
-    path('contact', contact, name='contact'),
     path('students/', include('Student.urls'))
 
 ]
