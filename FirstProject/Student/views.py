@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from  FirstProject.models import Profile
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Returning Students.url")
+    p = Profile.objects.all()
+    return render(request, 'check.html', {'data': p})
+
