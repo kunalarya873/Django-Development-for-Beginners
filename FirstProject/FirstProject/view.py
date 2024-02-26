@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from datetime import datetime
 from pytz import timezone
-from .models import Student, Profile
+from .models import Student, Profile, Employee
 
 def home(request):
     return render(request, 'index.html')
@@ -33,3 +33,17 @@ def reg(request):
             return redirect('/reg')
 
     return render(request, 'reg.html', {'username': curr})
+def crud(request):
+    e = Employee.objects.all
+    return render(request, 'crud.html', {'data':e})
+def insertdata(request):
+    if request.method =='POST':
+        name = request.POST['name']
+        address = request.POST['Address']
+        salary= request.POST['Salary']
+        salary = float(salary)
+        print(name,address,salary)
+        e = Employee(ename = name, eadd = address, esalary = salary)
+        e.save()
+        return redirect('/crud')
+    return render(request, 'insertdata.html')

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+</head>
+<body>
+    Employee Dashboard
+    <table border="2">
+        <thead>
+            <th>Employee Number</th>
+            <th>Employee name</th>
+            <th>Employee Salary</th>
+            <th>Employee Address</th>
+            <th>Actions</th>
+        </thead>
+        {% for i in data %}
+        <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.ename}}</td>
+        <td>{{i.esalary}}</td>
+        <td>{{i.eadd}}</td>
+        <td>
+            <a href="">Update </a>
+            <a href="">Delete</a>
+        </td><br>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
