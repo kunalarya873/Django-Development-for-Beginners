@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .view import home, contact, about, reg, contact, crud, insertdata
+from .view import home, contact, about, reg, contact, crud, insertdata, updatedata, deletedata
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,7 +29,9 @@ urlpatterns = [
     path('reg', reg, name= 'reg'),
     path('crud', crud, name= 'crud'),
     path('insertdata/', insertdata, name='insertdata'),
-    path('students/', include('Student.urls'))
+    path('students/', include('Student.urls')),
+    path('updatedata/<int:id>', updatedata, name='updatedata' ),
+    path('deletedata/<int:id>', deletedata, name='deletedata')
 
 ]
 if settings.DEBUG:

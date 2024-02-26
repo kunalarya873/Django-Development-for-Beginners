@@ -47,3 +47,18 @@ def insertdata(request):
         e.save()
         return redirect('/crud')
     return render(request, 'insertdata.html')
+def updatedata(request, id):
+    e = Employee.objects.get(id=id)
+    if request.method =='POST':
+        name = request.POST['name']
+        address = request.POST['Address']
+        salary= request.POST['Salary']
+        salary = float(salary)
+        print(name,address,salary)
+        e = Employee.objects.filter(id=id).update(ename = name, eadd = address, esalary = salary)
+        return redirect('/crud')
+    return render(request, 'updatedata.html', {'data': e})
+def deletedata(request, id):
+    e = Employee.objects.get(id=id)
+    e.delete()
+    return redirect('/crud')
