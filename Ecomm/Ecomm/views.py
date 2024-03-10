@@ -8,15 +8,23 @@ from django.http import HttpResponse
 
 def home(request):
     return render(request, "index.html")
-
+def main(request):
+    return render(request, 'main.html')
 def login_call(request):
     if request.method == 'POST':
         username = request.POST['uname']
         psw = request.POST['psw']
+        currUser = authenticate(username= username, password = psw)
+        if currUser:
+            login(request, currUser)
+            return main(request)
+        else:
+            return redirect('signup/')
         print(username, psw)
     return render(request, 'loginpage.html')
 def logout_call(request):
-    return render(request, )
+    logout(request)
+    return redirect('/login')
 def signup(request):
     if request.method == 'POST':
         fullname = request.POST['fullname']
@@ -29,4 +37,5 @@ def signup(request):
         p = Profile(user = u, mobile= mobile)
         p.save()
         print("Data Saved")
+        return redirect('/login')
     return render(request, 'register.html')
