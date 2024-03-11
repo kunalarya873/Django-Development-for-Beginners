@@ -1,0 +1,18 @@
+{
+  "name": "django-development-for-beginners",
+  "version": "1.0.0",
+  "description": "<img align=\"center\" src=\"https://media.geeksforgeeks.org/wp-content/uploads/20200210175202/django-basics.png\"></img>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "daisyui": "^4.7.3"
+  }
+}
