@@ -81,3 +81,11 @@ class AttributeValue(models.Model):
     id = models.BigAutoField(primary_key=True)
     attribute_value = models.CharField(max_length=100)
     attribute = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True)
+
+class ProductLine_AttributeValue(models.Model):
+    attribute_value = models.ForeignKey("AttributeValue", on_delete=models.CASCADE, null=True)
+    product_type = models.ForeignKey("ProductType", on_delete=models.CASCADE, null=True)
+
+class Product_ProductType(models.Model):
+    product = models.ForeignKey("Product", on_delete=models.CASCADE, null=True)
+    product_type = models.ForeignKey("ProductType", on_delete=models.CASCADE, null=True)
