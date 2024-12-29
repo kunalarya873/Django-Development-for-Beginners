@@ -15,8 +15,8 @@ class Product(models.Model):
     }
 
     pid = models.CharField(max_length=255)
-    name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=100, unique=True, help_text='Enter a category name.')
+    slug = models.SlugField(unique=True, editable=False)
     description = models.TextField(null=True)
     is_digtial = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
