@@ -31,6 +31,7 @@ class Product(models.Model):
         "Category", on_delete=models.SET_NULL, null=True
     )
     seasonal_event = models.ForeignKey("SeasonalEvents", on_delete=models.SET_NULL, null = True)
+    product_type = models.ManyToManyField("ProductType", related_name="product")
 
 
 class ProductLine(models.Model):
@@ -42,6 +43,7 @@ class ProductLine(models.Model):
     weight = models.FloatField()
     image = models.ForeignKey("ProductImage", on_delete= models.CASCADE)
     product = models.ForeignKey(Product, models.SET_NULL, null=False)
+    attribute = models.ManyToManyField("AttributeValue", related_name="productline")
 
 
 class ProductImage(models.Model):
@@ -73,4 +75,9 @@ class ProductType(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
     parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True)
-    
+
+
+class AttributeValue(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    attribute_value = models.CharField(max_length=100)
+    attribute = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True)
