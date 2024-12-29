@@ -62,3 +62,15 @@ class SeasonalEvents(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     name = models.CharField(max_length=100, unique=True)
+
+
+class Attribute(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(null=True)
+    is_active = models.BooleanField(default=False)
+
+class ProductType(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=100, unique=True)
+    parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True)
+    
