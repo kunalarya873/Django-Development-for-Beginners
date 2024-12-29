@@ -15,8 +15,8 @@ class Product(models.Model):
     }
 
     pid = models.CharField(max_length=255)
-    name = models.CharField(max_length=100)
-    slug = models.SlugField()
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(unique=True)
     description = models.TextField(null=True)
     is_digtial = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
@@ -39,19 +39,19 @@ class ProductLine(models.Model):
 
 
 class ProductImage(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     alternative_text = models.CharField(max_length=100)
-    url = models.ImageField()
+    url = models.ImageField(unique=True)
     order = models.IntegerField()
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField()
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(unique=True)
     is_active = models.BooleanField(default=False)
 
 
 class SeasonalEvents(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
