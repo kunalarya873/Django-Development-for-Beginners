@@ -89,3 +89,8 @@ class ProductLine_AttributeValue(models.Model):
 class Product_ProductType(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE, null=True)
     product_type = models.ForeignKey("ProductType", on_delete=models.CASCADE, null=True)
+
+class StockControl(models.Model):
+    stock_qty = models.IntegerField()
+    name = models.CharField(max_length=100)
+    stock_product = models.OneToOneField(Product, models.CASCADE, null=True)
