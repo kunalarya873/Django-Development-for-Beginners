@@ -64,9 +64,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     "default": {},
     "django_db": {
@@ -87,10 +84,6 @@ DATABASE_ROUTERS = [
     "routers.default_router.DefaultAppRouter",
     "routers.inventory_router.InventoryAppRouter",
 ]
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

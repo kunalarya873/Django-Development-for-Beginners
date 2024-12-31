@@ -1,11 +1,11 @@
 class InventoryAppRouter:
     def db_for_read(self, model, **hints):
-        if model.meta.app_label == "inventory":
+        if model._meta.app_label == "inventory":
             return "inventory_db"
         return None
 
     def db_for_write(self, model, **hints):
-        if model.meta.app_label == "inventory":
+        if model._meta.app_label == "inventory":
             return "inventory_db"
         return None
 
