@@ -25,12 +25,14 @@ services:
     container_name: celery
     build:
       context: .
-    command: celery --app=dcelery worker -l INFO
+    command: >
+      sh -c "celery -A dcelery worker --loglevel=info"
     volumes:
       - .:/usr/src/app
     environment:
       - DEBUG=1
       - SECRET_KEY=django-insecure-^x3o1(i+ye5zh1ekve#2h%u&jd&ygi23!976429v^id1b36ky6
       - ALLOWED_HOSTS=127.0.0.1,localhost
+      - CELERY_BROKER_URL=redis://redis:6379/0
     depends_on:
       - redis
